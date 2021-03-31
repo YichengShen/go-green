@@ -16,11 +16,12 @@ const navTheme = createMuiTheme({
         position: "fixed",
         bottom: 0,
         width: "100%",
-        backgroundColor: "#e8f5e9",
+        backgroundColor: green[50],
       },
     },
     MuiBottomNavigationAction: {
       root: {
+        boxSizing: "border-box",
         "&:hover": {
           color: green[700],
         },

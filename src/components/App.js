@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import BottomNav from "./BottomNav";
+import Header from "./Header";
 
 const App = () => {
   return (
@@ -9,7 +10,7 @@ const App = () => {
       <div>
         <Grid container direction="column">
           <Grid item xs={12}>
-            {/* <Header onSearch={handleSearch} /> */}
+            <Header />
           </Grid>
           <Grid item>
             <main>
