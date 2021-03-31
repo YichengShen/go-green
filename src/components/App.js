@@ -14,9 +14,10 @@ const App = () => {
           <Grid item>
             <main>
               <Switch>
-                <Route path="/">
-                  {/* <Home searchKeyword={searchInput} /> */}
-                </Route>
+                <Route path="/check-in">check-in</Route>
+                <Route path="/badges">badges</Route>
+                <Route path="/ranking">ranking</Route>
+                <Route path="/">home</Route>
               </Switch>
             </main>
           </Grid>

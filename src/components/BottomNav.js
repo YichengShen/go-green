@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -46,16 +47,27 @@ const BottomNav = () => {
         }}
         showLabels
       >
-        <BottomNavigationAction label="Home" icon={<HomeRoundedIcon />} />
         <BottomNavigationAction
+          component={Link}
+          to="/"
+          label="Home"
+          icon={<HomeRoundedIcon />}
+        />
+        <BottomNavigationAction
+          component={Link}
+          to="/check-in"
           label="Check-in"
           icon={<CheckCircleRoundedIcon />}
         />
         <BottomNavigationAction
+          component={Link}
+          to="/badges"
           label="Badges"
           icon={<BlurCircularRoundedIcon />}
         />
         <BottomNavigationAction
+          component={Link}
+          to="/ranking"
           label="Ranking"
           icon={<FormatListNumberedRoundedIcon />}
         />
