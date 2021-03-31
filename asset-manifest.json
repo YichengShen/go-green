@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/go-green/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/go-green/static/js/main.af3b9838.chunk.js",
+    "main.js.map": "/go-green/static/js/main.af3b9838.chunk.js.map",
+    "runtime-main.js": "/go-green/static/js/runtime-main.d50a6166.js",
+    "runtime-main.js.map": "/go-green/static/js/runtime-main.d50a6166.js.map",
+    "static/js/2.dbe7decf.chunk.js": "/go-green/static/js/2.dbe7decf.chunk.js",
+    "static/js/2.dbe7decf.chunk.js.map": "/go-green/static/js/2.dbe7decf.chunk.js.map",
+    "static/js/3.63be1e43.chunk.js": "/go-green/static/js/3.63be1e43.chunk.js",
+    "static/js/3.63be1e43.chunk.js.map": "/go-green/static/js/3.63be1e43.chunk.js.map",
+    "index.html": "/go-green/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/go-green/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.dbe7decf.chunk.js.LICENSE.txt": "/go-green/static/js/2.dbe7decf.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d50a6166.js",
+    "static/js/2.dbe7decf.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.af3b9838.chunk.js"
+  ]
+}
