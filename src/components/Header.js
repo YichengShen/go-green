@@ -48,7 +48,9 @@ const Header = () => {
             <Box mr={1} />
             <Typography variant="h5">GoGreen</Typography>
           </IconButton>
-          <Button>Login</Button>
+          <Button component={Link} to="/signup">
+            Sign Up
+          </Button>
         </Toolbar>
       </AppBar>
     </MuiThemeProvider>
