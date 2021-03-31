@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import BottomNav from "./BottomNav";
 import Header from "./Header";
+import Checkin from "../pages/Checkin";
 
 const App = () => {
   return (
@@ -15,7 +16,9 @@ const App = () => {
           <Grid item>
             <main>
               <Switch>
-                <Route path="/check-in">check-in</Route>
+                <Route path="/check-in">
+                  <Checkin />
+                </Route>
                 <Route path="/badges">badges</Route>
                 <Route path="/ranking">ranking</Route>
                 <Route path="/">home</Route>
