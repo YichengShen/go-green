@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -8,6 +8,8 @@ import IconButton from "@material-ui/core/IconButton";
 import EcoRoundedIcon from "@material-ui/icons/EcoRounded";
 import { Box, Button } from "@material-ui/core";
 import { green } from "@material-ui/core/colors";
+import { useAuth } from "../services/AuthContext";
+import AlertDialog from "./AlertDialog";
 
 const headerTheme = createMuiTheme({
   overrides: {
@@ -33,6 +35,27 @@ const headerTheme = createMuiTheme({
 });
 
 const Header = () => {
+  const [error, setError] = React.useState("");
+  const { currentUser, logout } = useAuth();
+  const history = useHistory();
+  const [alertOpen, setAlertOpen] = React.useState(false);
+
+  const handleLogout = async () => {
+    setError("");
+
+    try {
+      await logout();
+      history.push("/login");
+    } catch {
+      setError("Failed to log out");
+      setAlertOpen(true);
+    }
+  };
+
+  const handleCloseAlert = () => {
+    setAlertOpen(false);
+  };
+
   return (
     <MuiThemeProvider theme={headerTheme}>
       <AppBar position="static">
@@ -48,9 +71,20 @@ const Header = () => {
             <Box mr={1} />
             <Typography variant="h5">GoGreen</Typography>
           </IconButton>
-          <Button component={Link} to="/signup">
-            Sign Up
-          </Button>
+          {currentUser === null ? (
+            <Button component={Link} to="/login">
+              LOG IN
+            </Button>
+          ) : (
+            <React.Fragment>
+              <Button onClick={handleLogout}>LOG OUT</Button>
+              <AlertDialog
+                open={alertOpen}
+                onClose={handleCloseAlert}
+                errorMsg={error}
+              />
+            </React.Fragment>
+          )}
         </Toolbar>
       </AppBar>
     </MuiThemeProvider>

@@ -11,6 +11,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import green from "@material-ui/core/colors/green";
+import { useAuth } from "../services/AuthContext";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -41,7 +43,35 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Signup = () => {
+  const firstNameRef = React.useRef();
+  const lastNameRef = React.useRef();
+  const emailRef = React.useRef();
+  const passwordRef = React.useRef();
+  const passwordConfirmRef = React.useRef();
+
+  const { signup } = useAuth();
+  const [error, setError] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+
   const classes = useStyles();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+      return setError("Passwords do not match");
+    }
+
+    try {
+      setError("");
+      setLoading(true);
+      await signup(emailRef.current.value, passwordRef.current.value);
+    } catch {
+      setError("Failed to create your account");
+    }
+
+    setLoading(false);
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -60,7 +90,13 @@ const Signup = () => {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        {error && (
+          <Alert severity="error">
+            <AlertTitle>Error</AlertTitle>
+            {error}
+          </Alert>
+        )}
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -72,6 +108,7 @@ const Signup = () => {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                inputRef={firstNameRef}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -83,6 +120,7 @@ const Signup = () => {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                inputRef={lastNameRef}
               />
             </Grid>
             <Grid item xs={12}>
@@ -94,6 +132,7 @@ const Signup = () => {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                inputRef={emailRef}
               />
             </Grid>
             <Grid item xs={12}>
@@ -106,10 +145,25 @@ const Signup = () => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                inputRef={passwordRef}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="passwordConfirm"
+                label="Confirm Password"
+                type="password"
+                id="passwordConfirm"
+                autoComplete="current-password"
+                inputRef={passwordConfirmRef}
               />
             </Grid>
           </Grid>
           <Button
+            disabled={loading}
             type="submit"
             fullWidth
             variant="contained"
@@ -130,8 +184,8 @@ const Signup = () => {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link component={RouterLink} to="/signin" variant="body2">
-                Already have an account? Sign in
+              <Link component={RouterLink} to="/login" variant="body2">
+                Already have an account? Log in
               </Link>
             </Grid>
           </Grid>

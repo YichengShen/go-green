@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -10,6 +10,9 @@ import EcoRoundedIcon from "@material-ui/icons/EcoRounded";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import green from "@material-ui/core/colors/green";
+import { useAuth } from "../services/AuthContext";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -31,12 +34,40 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(1),
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
+    margin: theme.spacing(3, 0, 0),
+  },
+  cancel: {
+    margin: theme.spacing(2, 0, 2),
+    backgroundColor: green[100],
   },
 }));
 
-const Signin = () => {
+const Login = () => {
+  const emailRef = React.useRef();
+  const passwordRef = React.useRef();
+
   const classes = useStyles();
+
+  const { login } = useAuth();
+  const [error, setError] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+
+  const history = useHistory();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      setError("");
+      setLoading(true);
+      await login(emailRef.current.value, passwordRef.current.value);
+      history.push("/");
+    } catch {
+      setError("Failed to sign in");
+    }
+
+    setLoading(false);
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -53,9 +84,15 @@ const Signin = () => {
           <EcoRoundedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Log in
         </Typography>
-        <form className={classes.form} noValidate>
+        {error && (
+          <Alert severity="error">
+            <AlertTitle>Error</AlertTitle>
+            {error}
+          </Alert>
+        )}
+        <form className={classes.form} onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -66,6 +103,7 @@ const Signin = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            inputRef={emailRef}
           />
           <TextField
             variant="outlined"
@@ -77,15 +115,27 @@ const Signin = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            inputRef={passwordRef}
           />
           <Button
+            disabled={loading}
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Log In
+          </Button>
+          <Button
+            component={RouterLink}
+            to="/"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.cancel}
+          >
+            Cancel
           </Button>
           <Grid container>
             <Grid item xs>
@@ -105,4 +155,4 @@ const Signin = () => {
   );
 };
 
-export default Signin;
+export default Login;
