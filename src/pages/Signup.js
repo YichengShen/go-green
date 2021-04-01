@@ -12,6 +12,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import green from "@material-ui/core/colors/green";
 import { useAuth } from "../services/AuthContext";
+import registerUserInfo from "../services/registerUserInfo";
 import { Alert, AlertTitle } from "@material-ui/lab";
 
 const useStyles = makeStyles((theme) => ({
@@ -67,10 +68,17 @@ const Signup = () => {
     try {
       setError("");
       setLoading(true);
-      await signup(emailRef.current.value, passwordRef.current.value);
+      await signup(emailRef.current.value, passwordRef.current.value).then(
+        (result) => {
+          registerUserInfo(
+            firstNameRef.current.value,
+            lastNameRef.current.value
+          );
+        }
+      );
       history.push("/");
-    } catch {
-      setError("Failed to create your account");
+    } catch (error) {
+      setError("Failed to create your account." + error.message);
     }
 
     setLoading(false);
