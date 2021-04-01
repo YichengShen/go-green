@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
+import ForgotPassword from "../pages/ForgotPassword";
 import BottomNav from "./BottomNav";
 import Header from "./Header";
 import Checkin from "../pages/Checkin";
@@ -16,6 +17,7 @@ const App = () => {
         <Switch>
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
+          <Route path="/forgot-password" component={ForgotPassword} />
           <React.Fragment>
             <Grid container direction="column">
               <Grid item xs={12}>

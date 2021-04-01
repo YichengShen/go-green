@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as RouterLink, useHistory } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -42,28 +42,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = () => {
+const ForgotPassword = () => {
   const emailRef = React.useRef();
-  const passwordRef = React.useRef();
 
   const classes = useStyles();
 
-  const { login } = useAuth();
+  const { resetPassword } = useAuth();
   const [error, setError] = React.useState("");
+  const [message, setMessage] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-
-  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+      setMessage("");
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
-    } catch {
-      setError("Failed to sign in");
+      await resetPassword(emailRef.current.value);
+      setMessage("Check your inbox for further instructions");
+    } catch (error) {
+      setError("Failed to reset password. " + error.message);
     }
 
     setLoading(false);
@@ -84,12 +83,18 @@ const Login = () => {
           <EcoRoundedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Log in
+          Reset Password
         </Typography>
         {error && (
           <Alert severity="error">
             <AlertTitle>Error</AlertTitle>
             {error}
+          </Alert>
+        )}
+        {message && (
+          <Alert severity="success">
+            <AlertTitle>Reset Email Sent</AlertTitle>
+            {message}
           </Alert>
         )}
         <form className={classes.form} onSubmit={handleSubmit}>
@@ -105,18 +110,6 @@ const Login = () => {
             autoFocus
             inputRef={emailRef}
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            inputRef={passwordRef}
-          />
           <Button
             disabled={loading}
             type="submit"
@@ -125,28 +118,19 @@ const Login = () => {
             color="primary"
             className={classes.submit}
           >
-            Log In
+            Reset via Email
           </Button>
           <Button
             component={RouterLink}
-            to="/"
+            to="/login"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.cancel}
           >
-            Cancel
+            GO TO LOG IN
           </Button>
           <Grid container>
-            <Grid item xs>
-              <Link
-                component={RouterLink}
-                to="/forgot-password"
-                variant="body2"
-              >
-                Forgot password?
-              </Link>
-            </Grid>
             <Grid item>
               <Link component={RouterLink} to="/signup" variant="body2">
                 {"Don't have an account? Sign Up"}
@@ -159,4 +143,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

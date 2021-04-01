@@ -1,5 +1,5 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -55,6 +55,8 @@ const Signup = () => {
 
   const classes = useStyles();
 
+  const history = useHistory();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -66,6 +68,7 @@ const Signup = () => {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
+      history.push("/");
     } catch {
       setError("Failed to create your account");
     }
