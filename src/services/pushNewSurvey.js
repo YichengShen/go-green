@@ -1,6 +1,8 @@
 import firebase from "firebase/app";
 import { firestore as db } from "./firebase";
+import moment from "moment";
 
+// IMPORTANT: time in UTC
 // Returns error message or empty string (success)
 const pushNewSurvey = (city, coordinates, score) => {
   // The current user
@@ -9,7 +11,7 @@ const pushNewSurvey = (city, coordinates, score) => {
   // Push a new user into database
   const newSurvey = {
     uid: user.uid,
-    date: firebase.firestore.Timestamp.fromDate(new Date()),
+    date: firebase.firestore.Timestamp.fromDate(moment.utc().toDate()),
     city: city,
     coordinates: {
       lat: coordinates.lat,

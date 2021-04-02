@@ -2,16 +2,17 @@ import React from "react";
 import Globe from "../components/Globe";
 import DailySurvey from "../components/DailySurvey";
 import pushNewSurvey from "../services/pushNewSurvey";
+import checkSurveyCompleted from "../services/checkSurveyCompleted";
 
 const Checkin = (props) => {
+  const surveyCompleted = checkSurveyCompleted();
+
   const [city, setCity] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
     lat: null,
     lng: null,
   });
   const [score, setScore] = React.useState("100");
-
-  const [surveyCompleted, setSurveyCompleted] = React.useState(false);
 
   const [submitError, setSubmitError] = React.useState("");
 
@@ -34,9 +35,6 @@ const Checkin = (props) => {
       setSubmitError(errorMsg);
       return;
     }
-
-    // success
-    setSurveyCompleted(true);
   };
 
   return (

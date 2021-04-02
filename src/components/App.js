@@ -7,6 +7,8 @@ import ForgotPassword from "../pages/ForgotPassword";
 import BottomNav from "./BottomNav";
 import Header from "./Header";
 import Checkin from "../pages/Checkin";
+import Badges from "../pages/Badges";
+import Ranking from "../pages/Ranking";
 import { AuthProvider } from "../services/AuthContext";
 import PrivateRoute from "./PrivateRoute";
 import theme from "../theme";
@@ -35,12 +37,12 @@ const App = () => {
                 </Grid>
                 <Grid item>
                   <main>
-                    <Route
-                      path="/check-in"
-                      render={(props) => <Checkin {...props} />}
-                    />
-                    <Route path="/badges">badges</Route>
-                    <Route path="/ranking">ranking</Route>
+                    <PrivateRoute path="/check-in" component={Checkin} />
+
+                    <PrivateRoute path="/badges" component={Badges} />
+
+                    <PrivateRoute path="/ranking" component={Ranking} />
+
                     <Route exact path="/">
                       home
                     </Route>
