@@ -2,12 +2,14 @@ import React from "react";
 import Globe from "../components/Globe";
 import DailySurvey from "../components/DailySurvey";
 
-const Checkin = () => {
-  const [surveyCompleted, setSurveyCompleted] = React.useState(false);
-
+const Checkin = (props) => {
   return (
     <React.Fragment>
-      {!surveyCompleted ? <DailySurvey /> : <Globe />}
+      {!props.surveyCompleted ? (
+        <DailySurvey onSubmit={props.onSurveySubmit} />
+      ) : (
+        <Globe />
+      )}
     </React.Fragment>
   );
 };

@@ -12,6 +12,12 @@ import PrivateRoute from "./PrivateRoute";
 import theme from "../theme";
 
 const App = () => {
+  const [surveyCompleted, setSurveyCompleted] = React.useState(false);
+
+  const handleSubmit = (e) => {
+    setSurveyCompleted(true);
+  };
+
   return (
     <div
       style={{
@@ -33,7 +39,16 @@ const App = () => {
                 </Grid>
                 <Grid item>
                   <main>
-                    <Route path="/check-in" component={Checkin} />
+                    <Route
+                      path="/check-in"
+                      render={(props) => (
+                        <Checkin
+                          {...props}
+                          surveyCompleted={surveyCompleted}
+                          onSurveySubmit={handleSubmit}
+                        />
+                      )}
+                    />
                     <Route path="/badges">badges</Route>
                     <Route path="/ranking">ranking</Route>
                     <Route exact path="/">

@@ -1,12 +1,16 @@
 import React from "react";
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Button, Grid, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import { green, red } from "@material-ui/core/colors";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import theme from "../theme";
 
 const surveyTheme = createMuiTheme({
+  palette: {
+    secondary: { main: theme.palette.secondary.main },
+  },
   overrides: {
     MuiToggleButtonGroup: {
       root: {
@@ -55,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const DailySurvey = (theme) => {
+const DailySurvey = (props, theme) => {
   const classes = useStyles();
 
   const [level, setLevel] = React.useState("100");
@@ -100,6 +104,9 @@ const DailySurvey = (theme) => {
                 100% Gasoline
               </ToggleButton>
             </ToggleButtonGroup>
+            <Button color="secondary" onClick={props.onSubmit}>
+              Submit
+            </Button>
           </Paper>
         </Grid>
         <Grid item xs={1} sm={2} md={3} />
