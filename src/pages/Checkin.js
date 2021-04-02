@@ -1,6 +1,7 @@
 import React from "react";
 import Globe from "../components/Globe";
 import DailySurvey from "../components/DailySurvey";
+import pushNewSurvey from "../services/pushNewSurvey";
 
 const Checkin = (props) => {
   const [city, setCity] = React.useState("");
@@ -8,20 +9,33 @@ const Checkin = (props) => {
     lat: null,
     lng: null,
   });
+  const [score, setScore] = React.useState("100");
 
   const [surveyCompleted, setSurveyCompleted] = React.useState(false);
 
-  const [submitError, setSubmitError] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState("");
 
   const handleSubmit = (e) => {
-    setSubmitError(false);
+    setSubmitError("");
+
+    // if Invalid city name
     if (coordinates.lat === null || coordinates.lng === null) {
-      setSubmitError(true);
+      setSubmitError(
+        "Failed to submit. Invalid city name. Please type in a city name and select from the suggestions below the input field."
+      );
       return;
     }
-    // TODO: remove pring
-    // store coordinates into database
-    console.log(coordinates.lat, coordinates.lng);
+
+    // Push the new survey to firestore
+    const errorMsg = pushNewSurvey(city, coordinates, score);
+
+    // if pushing to firestore fails
+    if (errorMsg !== "") {
+      setSubmitError(errorMsg);
+      return;
+    }
+
+    // success
     setSurveyCompleted(true);
   };
 
@@ -33,6 +47,8 @@ const Checkin = (props) => {
           setCity={setCity}
           coordinates={coordinates}
           setCoordinates={setCoordinates}
+          level={score}
+          setLevel={setScore}
           onSubmit={handleSubmit}
           submitError={submitError}
         />

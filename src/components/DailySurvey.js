@@ -75,11 +75,11 @@ const DailySurvey = (props, theme) => {
     setCity,
     coordinates,
     setCoordinates,
+    level,
+    setLevel,
     onSubmit,
     submitError,
   } = props;
-
-  const [level, setLevel] = React.useState("100");
 
   const handleChange = (event, newLevel) => {
     if (newLevel !== null) {
@@ -141,7 +141,7 @@ const DailySurvey = (props, theme) => {
             <Button color="secondary" onClick={onSubmit}>
               Submit
             </Button>
-            {submitError && (
+            {submitError !== "" && (
               <>
                 <Box mt={2} />
                 <Alert severity="error" style={{ width: "80%" }}>
