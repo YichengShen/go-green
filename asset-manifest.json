@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/go-green/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/go-green/static/js/main.392cb580.chunk.js",
-    "main.js.map": "/go-green/static/js/main.392cb580.chunk.js.map",
+    "main.js": "/go-green/static/js/main.ed2eca45.chunk.js",
+    "main.js.map": "/go-green/static/js/main.ed2eca45.chunk.js.map",
     "runtime-main.js": "/go-green/static/js/runtime-main.ae6358e9.js",
     "runtime-main.js.map": "/go-green/static/js/runtime-main.ae6358e9.js.map",
-    "static/js/2.ad47ae45.chunk.js": "/go-green/static/js/2.ad47ae45.chunk.js",
-    "static/js/2.ad47ae45.chunk.js.map": "/go-green/static/js/2.ad47ae45.chunk.js.map",
+    "static/js/2.69014cad.chunk.js": "/go-green/static/js/2.69014cad.chunk.js",
+    "static/js/2.69014cad.chunk.js.map": "/go-green/static/js/2.69014cad.chunk.js.map",
     "index.html": "/go-green/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/go-green/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.ad47ae45.chunk.js.LICENSE.txt": "/go-green/static/js/2.ad47ae45.chunk.js.LICENSE.txt"
+    "static/js/2.69014cad.chunk.js.LICENSE.txt": "/go-green/static/js/2.69014cad.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ae6358e9.js",
-    "static/js/2.ad47ae45.chunk.js",
+    "static/js/2.69014cad.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.392cb580.chunk.js"
+    "static/js/main.ed2eca45.chunk.js"
   ]
 }
