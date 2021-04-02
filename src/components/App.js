@@ -12,11 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import theme from "../theme";
 
 const App = () => {
-  const [surveyCompleted, setSurveyCompleted] = React.useState(false);
-
-  const handleSubmit = (e) => {
-    setSurveyCompleted(true);
-  };
+  const [pageValue, setPageValue] = React.useState(0);
 
   return (
     <div
@@ -41,13 +37,7 @@ const App = () => {
                   <main>
                     <Route
                       path="/check-in"
-                      render={(props) => (
-                        <Checkin
-                          {...props}
-                          surveyCompleted={surveyCompleted}
-                          onSurveySubmit={handleSubmit}
-                        />
-                      )}
+                      render={(props) => <Checkin {...props} />}
                     />
                     <Route path="/badges">badges</Route>
                     <Route path="/ranking">ranking</Route>
@@ -57,7 +47,10 @@ const App = () => {
                   </main>
                 </Grid>
                 <Grid item xs={12}>
-                  <BottomNav />
+                  <BottomNav
+                    pageValue={pageValue}
+                    onPageChange={setPageValue}
+                  />
                 </Grid>
               </Grid>
             </React.Fragment>

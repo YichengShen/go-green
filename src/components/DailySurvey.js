@@ -1,11 +1,13 @@
 import React from "react";
-import { Button, Grid, Paper, Typography } from "@material-ui/core";
+import { Box, Button, Grid, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import { green, red } from "@material-ui/core/colors";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import theme from "../theme";
+import CityInputField from "./CityInputField";
+import Alert from "@material-ui/lab/Alert";
 
 const surveyTheme = createMuiTheme({
   palette: {
@@ -40,13 +42,19 @@ const surveyTheme = createMuiTheme({
         },
       },
     },
+    MuiButton: {
+      root: {
+        backgroundColor: "rgba(255, 255, 255, .2)",
+      },
+    },
   },
 });
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    backgroundColor: theme.palette.primary.main,
-    marginTop: theme.spacing(8),
+    backgroundColor: theme.palette.primary.mainLight,
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(10),
     padding: "30px 0px",
     display: "flex",
     flexDirection: "column",
@@ -62,10 +70,21 @@ const useStyles = makeStyles((theme) => ({
 const DailySurvey = (props, theme) => {
   const classes = useStyles();
 
+  const {
+    city,
+    setCity,
+    coordinates,
+    setCoordinates,
+    onSubmit,
+    submitError,
+  } = props;
+
   const [level, setLevel] = React.useState("100");
 
-  const handleChange = (event, nextLevel) => {
-    setLevel(nextLevel);
+  const handleChange = (event, newLevel) => {
+    if (newLevel !== null) {
+      setLevel(newLevel);
+    }
   };
 
   return (
@@ -81,6 +100,19 @@ const DailySurvey = (props, theme) => {
             >
               Today's Check-in
             </Typography>
+
+            <CityInputField
+              city={city}
+              onSetCity={setCity}
+              coordinates={coordinates}
+              onSetCoordinates={setCoordinates}
+            />
+
+            <Box mt={2} />
+            <Typography color="secondary">
+              How did you commute today?
+            </Typography>
+            <Typography color="secondary">Select a level below.</Typography>
             <ToggleButtonGroup
               orientation="vertical"
               value={level}
@@ -104,9 +136,20 @@ const DailySurvey = (props, theme) => {
                 100% Gasoline
               </ToggleButton>
             </ToggleButtonGroup>
-            <Button color="secondary" onClick={props.onSubmit}>
+
+            <Box mt={2} />
+            <Button color="secondary" onClick={onSubmit}>
               Submit
             </Button>
+            {submitError && (
+              <>
+                <Box mt={2} />
+                <Alert severity="error" style={{ width: "80%" }}>
+                  Failed to submit. Invalid city name. Please type in a city
+                  name and select from the suggestions below the input field.
+                </Alert>
+              </>
+            )}
           </Paper>
         </Grid>
         <Grid item xs={1} sm={2} md={3} />

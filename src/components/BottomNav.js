@@ -37,15 +37,13 @@ const navTheme = createMuiTheme({
   },
 });
 
-const BottomNav = () => {
-  const [value, setValue] = React.useState(0);
-
+const BottomNav = (props) => {
   return (
     <MuiThemeProvider theme={navTheme}>
       <BottomNavigation
-        value={value}
+        value={props.pageValue}
         onChange={(event, newValue) => {
-          setValue(newValue);
+          props.onPageChange(newValue);
         }}
         showLabels
       >
