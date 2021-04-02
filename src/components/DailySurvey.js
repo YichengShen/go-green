@@ -3,7 +3,7 @@ import { Grid, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
-import { green, orange, red, yellow } from "@material-ui/core/colors";
+import { green, red } from "@material-ui/core/colors";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 
 const surveyTheme = createMuiTheme({
@@ -41,6 +41,7 @@ const surveyTheme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   paper: {
+    backgroundColor: theme.palette.primary.main,
     marginTop: theme.spacing(8),
     padding: "30px 0px",
     display: "flex",
@@ -48,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   greenBold: {
-    color: green[500],
+    color: theme.palette.secondary.light,
     fontWeight: "bolder",
     marginBottom: "20px",
   },

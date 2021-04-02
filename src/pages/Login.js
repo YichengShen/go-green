@@ -10,23 +10,27 @@ import EcoRoundedIcon from "@material-ui/icons/EcoRounded";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import green from "@material-ui/core/colors/green";
 import { useAuth } from "../services/AuthContext";
 import { Alert, AlertTitle } from "@material-ui/lab";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    padding: theme.spacing(4),
+    marginBottom: theme.spacing(6),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.secondary.light,
+    backgroundColor: theme.palette.primary.contrastText,
   },
   greenBoldText: {
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.light,
     fontWeight: "Bolder",
   },
   form: {
@@ -38,7 +42,26 @@ const useStyles = makeStyles((theme) => ({
   },
   cancel: {
     margin: theme.spacing(2, 0, 2),
-    backgroundColor: green[100],
+    backgroundColor: "grey",
+  },
+
+  cssLabel: {
+    color: `${theme.palette.secondary.light} !important`,
+  },
+  cssInput: {
+    color: `${theme.palette.primary.contrastText} !important`,
+  },
+  cssOutlinedInput: {
+    "&$cssFocused $notchedOutline": {
+      borderColor: `${theme.palette.secondary.light} !important`,
+    },
+  },
+  cssFocused: {
+    color: `${theme.palette.secondary.light} !important`,
+  },
+  notchedOutline: {
+    borderWidth: "1px",
+    borderColor: `${theme.palette.secondary.light} !important`,
   },
 }));
 
@@ -72,6 +95,7 @@ const Login = () => {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+      <Box p={2} />
       <div className={classes.paper}>
         <Typography
           className={classes.greenBoldText}
@@ -104,6 +128,21 @@ const Login = () => {
             autoComplete="email"
             autoFocus
             inputRef={emailRef}
+            InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused,
+              },
+            }}
+            InputProps={{
+              classes: {
+                root: classes.cssOutlinedInput,
+                input: classes.cssInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              inputMode: "numeric",
+            }}
           />
           <TextField
             variant="outlined"
@@ -116,13 +155,28 @@ const Login = () => {
             id="password"
             autoComplete="current-password"
             inputRef={passwordRef}
+            InputLabelProps={{
+              classes: {
+                root: classes.cssLabel,
+                focused: classes.cssFocused,
+              },
+            }}
+            InputProps={{
+              classes: {
+                root: classes.cssOutlinedInput,
+                input: classes.cssInput,
+                focused: classes.cssFocused,
+                notchedOutline: classes.notchedOutline,
+              },
+              inputMode: "numeric",
+            }}
           />
           <Button
             disabled={loading}
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
+            color="secondary"
             className={classes.submit}
           >
             Log In
@@ -132,7 +186,7 @@ const Login = () => {
             to="/"
             fullWidth
             variant="contained"
-            color="primary"
+            color="secondary"
             className={classes.cancel}
           >
             Cancel
@@ -143,12 +197,18 @@ const Login = () => {
                 component={RouterLink}
                 to="/forgot-password"
                 variant="body2"
+                color="secondary"
               >
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link component={RouterLink} to="/signup" variant="body2">
+              <Link
+                component={RouterLink}
+                to="/signup"
+                variant="body2"
+                color="secondary"
+              >
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>

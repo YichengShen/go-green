@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
-import { green } from "@material-ui/core/colors";
 import HomeRoundedIcon from "@material-ui/icons/HomeRounded";
 import CheckCircleRoundedIcon from "@material-ui/icons/CheckCircleRounded";
 import FormatListNumberedRoundedIcon from "@material-ui/icons/FormatListNumberedRounded";
 import BlurCircularRoundedIcon from "@material-ui/icons/BlurCircularRounded";
+import theme from "../theme";
 
 const navTheme = createMuiTheme({
   overrides: {
@@ -16,19 +16,20 @@ const navTheme = createMuiTheme({
         position: "fixed",
         bottom: 0,
         width: "100%",
-        backgroundColor: green[50],
+        backgroundColor: theme.palette.primary.main,
       },
     },
     MuiBottomNavigationAction: {
       root: {
+        color: theme.palette.primary.contrastText,
         boxSizing: "border-box",
         "&:hover": {
-          color: green[700],
+          color: theme.palette.secondary.main,
         },
         "&$selected": {
-          color: green[400],
+          color: theme.palette.secondary.light,
           "&:hover": {
-            color: green[700],
+            color: theme.palette.secondary.main,
           },
         },
       },

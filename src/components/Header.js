@@ -7,27 +7,27 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import EcoRoundedIcon from "@material-ui/icons/EcoRounded";
 import { Box, Button } from "@material-ui/core";
-import { green } from "@material-ui/core/colors";
 import { useAuth } from "../services/AuthContext";
 import AlertDialog from "./AlertDialog";
+import theme from "../theme";
 
 const headerTheme = createMuiTheme({
   overrides: {
     MuiAppBar: {
       colorPrimary: {
-        color: green[500],
-        backgroundColor: green[50],
+        color: theme.palette.secondary.light,
+        backgroundColor: theme.palette.primary.dark,
       },
     },
     MuiButton: {
       root: {
         position: "absolute",
         right: 10,
-        color: green[500],
-        backgroundColor: green[100],
+        color: theme.palette.secondary.main,
+        backgroundColor: theme.palette.primary.main,
         "&:hover": {
-          color: green[700],
-          backgroundColor: green[200],
+          color: theme.palette.secondary.light,
+          backgroundColor: theme.palette.primary.light,
         },
       },
     },

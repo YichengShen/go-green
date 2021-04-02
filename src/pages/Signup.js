@@ -10,36 +10,59 @@ import EcoRoundedIcon from "@material-ui/icons/EcoRounded";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import green from "@material-ui/core/colors/green";
 import { useAuth } from "../services/AuthContext";
 import registerUserInfo from "../services/registerUserInfo";
 import { Alert, AlertTitle } from "@material-ui/lab";
+import { Box } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    padding: theme.spacing(4),
+    marginBottom: theme.spacing(6),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.secondary.light,
+    backgroundColor: theme.palette.primary.contrastText,
   },
   greenBoldText: {
-    color: theme.palette.primary.main,
+    color: theme.palette.secondary.light,
     fontWeight: "Bolder",
   },
   form: {
     width: "100%",
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 0),
   },
   cancel: {
     margin: theme.spacing(2, 0, 2),
-    backgroundColor: green[100],
+    backgroundColor: "grey",
+  },
+
+  cssLabel: {
+    color: `${theme.palette.secondary.light} !important`,
+  },
+  cssInput: {
+    color: `${theme.palette.primary.contrastText} !important`,
+  },
+  cssOutlinedInput: {
+    "&$cssFocused $notchedOutline": {
+      borderColor: `${theme.palette.secondary.light} !important`,
+    },
+  },
+  cssFocused: {
+    color: `${theme.palette.secondary.light} !important`,
+  },
+  notchedOutline: {
+    borderWidth: "1px",
+    borderColor: `${theme.palette.secondary.light} !important`,
   },
 }));
 
@@ -87,6 +110,7 @@ const Signup = () => {
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+      <Box p={2} />
       <div className={classes.paper}>
         <Typography
           className={classes.greenBoldText}
@@ -120,6 +144,21 @@ const Signup = () => {
                 label="First Name"
                 autoFocus
                 inputRef={firstNameRef}
+                InputLabelProps={{
+                  classes: {
+                    root: classes.cssLabel,
+                    focused: classes.cssFocused,
+                  },
+                }}
+                InputProps={{
+                  classes: {
+                    root: classes.cssOutlinedInput,
+                    input: classes.cssInput,
+                    focused: classes.cssFocused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                  inputMode: "numeric",
+                }}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -132,6 +171,21 @@ const Signup = () => {
                 name="lastName"
                 autoComplete="lname"
                 inputRef={lastNameRef}
+                InputLabelProps={{
+                  classes: {
+                    root: classes.cssLabel,
+                    focused: classes.cssFocused,
+                  },
+                }}
+                InputProps={{
+                  classes: {
+                    root: classes.cssOutlinedInput,
+                    input: classes.cssInput,
+                    focused: classes.cssFocused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                  inputMode: "numeric",
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -144,6 +198,21 @@ const Signup = () => {
                 name="email"
                 autoComplete="email"
                 inputRef={emailRef}
+                InputLabelProps={{
+                  classes: {
+                    root: classes.cssLabel,
+                    focused: classes.cssFocused,
+                  },
+                }}
+                InputProps={{
+                  classes: {
+                    root: classes.cssOutlinedInput,
+                    input: classes.cssInput,
+                    focused: classes.cssFocused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                  inputMode: "numeric",
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -157,6 +226,21 @@ const Signup = () => {
                 id="password"
                 autoComplete="current-password"
                 inputRef={passwordRef}
+                InputLabelProps={{
+                  classes: {
+                    root: classes.cssLabel,
+                    focused: classes.cssFocused,
+                  },
+                }}
+                InputProps={{
+                  classes: {
+                    root: classes.cssOutlinedInput,
+                    input: classes.cssInput,
+                    focused: classes.cssFocused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                  inputMode: "numeric",
+                }}
               />
             </Grid>
             <Grid item xs={12}>
@@ -170,6 +254,21 @@ const Signup = () => {
                 id="passwordConfirm"
                 autoComplete="current-password"
                 inputRef={passwordConfirmRef}
+                InputLabelProps={{
+                  classes: {
+                    root: classes.cssLabel,
+                    focused: classes.cssFocused,
+                  },
+                }}
+                InputProps={{
+                  classes: {
+                    root: classes.cssOutlinedInput,
+                    input: classes.cssInput,
+                    focused: classes.cssFocused,
+                    notchedOutline: classes.notchedOutline,
+                  },
+                  inputMode: "numeric",
+                }}
               />
             </Grid>
           </Grid>
@@ -178,7 +277,7 @@ const Signup = () => {
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
+            color="secondary"
             className={classes.submit}
           >
             Sign Up
@@ -188,14 +287,19 @@ const Signup = () => {
             to="/"
             fullWidth
             variant="contained"
-            color="primary"
+            color="secondary"
             className={classes.cancel}
           >
             Cancel
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link component={RouterLink} to="/login" variant="body2">
+              <Link
+                component={RouterLink}
+                to="/login"
+                variant="body2"
+                color="secondary"
+              >
                 Already have an account? Log in
               </Link>
             </Grid>
