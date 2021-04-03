@@ -8,19 +8,21 @@ const checkSurveyCompleted = async () => {
   const user = firebase.auth().currentUser;
   const uid = user.uid;
 
+  let BreakException = {};
+
   // get all uid that have submitted the survey already
-  await db
+  return db
     .collection("surveys")
     .where("date", ">", startOfToday())
-    .onSnapshot((querySnapshot) => {
-      var uidArray = [];
-      querySnapshot.forEach((doc) => {
-        uidArray.push(doc.data().uid);
-      });
-      if (uidArray.includes(uid)) {
-        return true;
+    .get()
+    .then((querySnapshot) => {
+      try {
+        querySnapshot.forEach((doc) => {
+          if (doc.data().uid === uid) throw BreakException;
+        });
+      } catch (e) {
+        if (e === BreakException) return true;
       }
-
       return false;
     });
 };

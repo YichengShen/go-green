@@ -5,7 +5,24 @@ import pushNewSurvey from "../services/pushNewSurvey";
 import checkSurveyCompleted from "../services/checkSurveyCompleted";
 
 const Checkin = (props) => {
-  const surveyCompleted = checkSurveyCompleted();
+  const [surveyCompleted, setSurveyCompleted] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    async function check() {
+      try {
+        setLoading(true);
+        let response = await checkSurveyCompleted();
+        setSurveyCompleted(response);
+        setLoading(false);
+      } catch (error) {
+        // TODO: handle error
+        setLoading(false);
+        console.log(error);
+      }
+    }
+    check();
+  }, []);
 
   const [city, setCity] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
@@ -35,7 +52,11 @@ const Checkin = (props) => {
       setSubmitError(errorMsg);
       return;
     }
+
+    setSurveyCompleted(true);
   };
+
+  if (loading) return <span>Loading</span>;
 
   return (
     <React.Fragment>
