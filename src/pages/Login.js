@@ -125,7 +125,7 @@ const Login = () => {
             id="email"
             label="Email Address"
             name="email"
-            autoComplete="email"
+            autoComplete="off"
             autoFocus
             inputRef={emailRef}
             InputLabelProps={{
@@ -153,7 +153,7 @@ const Login = () => {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
+            autoComplete="off"
             inputRef={passwordRef}
             InputLabelProps={{
               classes: {

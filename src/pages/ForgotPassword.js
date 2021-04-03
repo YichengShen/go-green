@@ -130,7 +130,7 @@ const ForgotPassword = () => {
             id="email"
             label="Email Address"
             name="email"
-            autoComplete="email"
+            autoComplete="off"
             autoFocus
             inputRef={emailRef}
             InputLabelProps={{
