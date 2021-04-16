@@ -1,0 +1,24 @@
+{
+    
+"users": [
+    {
+        "firstName":"Yicheng",
+        "lastName":"Shen",
+        "uid":"AAut2nGV6uRSL38yR0UyXT9gD464"
+    }
+], 
+
+"surveys": [
+    {
+        "city":"Boston, MA, USA",
+        "coordinates": {
+            "lat":"42.3600825",
+            "lng":"-71.0588801"
+        },
+        "date":"4/4/2021 2:31:43 PM",
+        "score":"100",
+        "uid":"AAut2nGV6uRSL38yR0UyXT9gD464"
+    }
+]
+
+}
