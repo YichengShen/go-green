@@ -29,7 +29,8 @@ const Globe = () => {
     enableMarkerGlow: "true",
     globeCloudsOpacity: 0.5,
     globeGlowColor: "blue",
-    markerTooltipRenderer: (marker) => `${marker.city}: ${marker.value}`,
+    enableMarkerTooltip: true,
+    markerTooltipRenderer: (marker) => `${marker.city}: ${marker.score}`,
   };
 
   if (loading) return <span>Loading</span>;

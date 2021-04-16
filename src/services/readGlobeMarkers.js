@@ -40,7 +40,8 @@ const readGlobeMarkers = async () => {
           city: v.city,
           color: scoreToColor(score),
           coordinates: v.coordinates,
-          value: score,
+          value: 66,
+          score: score,
         });
       });
 
