@@ -5,6 +5,8 @@ import pushNewSurvey from "../services/pushNewSurvey";
 import checkSurveyCompleted from "../services/checkSurveyCompleted";
 
 const Checkin = (props) => {
+  const { setCheckinCompleted } = props;
+
   const [surveyCompleted, setSurveyCompleted] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
 
@@ -14,6 +16,7 @@ const Checkin = (props) => {
         setLoading(true);
         let response = await checkSurveyCompleted();
         setSurveyCompleted(response);
+        setCheckinCompleted(response);
         setLoading(false);
       } catch (error) {
         // TODO: handle error
@@ -22,7 +25,7 @@ const Checkin = (props) => {
       }
     }
     check();
-  }, []);
+  }, [setCheckinCompleted]);
 
   const [city, setCity] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({
@@ -54,6 +57,7 @@ const Checkin = (props) => {
     }
 
     setSurveyCompleted(true);
+    props.setCheckinCompleted(surveyCompleted);
   };
 
   if (loading) return <span>Loading</span>;

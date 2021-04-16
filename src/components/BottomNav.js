@@ -59,7 +59,11 @@ const BottomNav = (props) => {
           to="/check-in"
           label="Check-in"
           icon={
-            <Badge color="secondary" variant="dot" invisible={false}>
+            <Badge
+              color="secondary"
+              variant="dot"
+              invisible={props.checkinCompleted}
+            >
               <CheckCircleRoundedIcon />
             </Badge>
           }

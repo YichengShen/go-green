@@ -15,6 +15,7 @@ import theme from "../theme";
 
 const App = () => {
   const [pageValue, setPageValue] = React.useState(0);
+  const [checkinCompleted, setCheckinCompleted] = React.useState(false);
 
   return (
     <div
@@ -37,7 +38,11 @@ const App = () => {
                 </Grid>
                 <Grid item>
                   <main>
-                    <PrivateRoute path="/check-in" component={Checkin} />
+                    <PrivateRoute
+                      path="/check-in"
+                      component={Checkin}
+                      setCheckinCompleted={setCheckinCompleted}
+                    />
 
                     <PrivateRoute path="/badges" component={Badges} />
 
@@ -52,6 +57,7 @@ const App = () => {
                   <BottomNav
                     pageValue={pageValue}
                     onPageChange={setPageValue}
+                    checkinCompleted={checkinCompleted}
                   />
                 </Grid>
               </Grid>
