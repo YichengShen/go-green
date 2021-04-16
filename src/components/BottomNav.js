@@ -8,6 +8,7 @@ import CheckCircleRoundedIcon from "@material-ui/icons/CheckCircleRounded";
 import FormatListNumberedRoundedIcon from "@material-ui/icons/FormatListNumberedRounded";
 import BlurCircularRoundedIcon from "@material-ui/icons/BlurCircularRounded";
 import theme from "../theme";
+import Badge from "@material-ui/core/Badge";
 
 const navTheme = createMuiTheme({
   overrides: {
@@ -57,7 +58,11 @@ const BottomNav = (props) => {
           component={Link}
           to="/check-in"
           label="Check-in"
-          icon={<CheckCircleRoundedIcon />}
+          icon={
+            <Badge color="secondary" variant="dot" invisible={false}>
+              <CheckCircleRoundedIcon />
+            </Badge>
+          }
         />
         <BottomNavigationAction
           component={Link}
