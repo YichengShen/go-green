@@ -2,6 +2,23 @@
 
 Web final project
 
+## TODO List
+- [x] Set up project environment
+- [x] Skeleton Code
+  - [x] Set theme with context provider
+  - [x] Logo & button at top right corner
+  - [x] Bottom navbar
+  - [x] Enable routing between different pages
+- [x] Firebase authentication
+- [x] Log in, sign up, & forget passward pages
+- [x] Firestore as database
+- [ ] Home page
+- [x] Check-in page
+  - [x] Check-in form
+  - [x] Globe visualization
+- [ ] Badges page
+- [ ] Ranking page
+
 ## How to install dependencies
 
 ### `npm i`
