@@ -38,3 +38,10 @@ You will also see any lint errors in the console.
 ## How to deploy to GitHub Pages
 
 ### `npm run deploy`
+
+## Resources
+1. [Material-UI](https://material-ui.com)
+2. [Firestore API](https://firebase.google.com/docs/firestore)
+3. [Firebase Authentication API](https://firebase.google.com/docs/auth/web/start)
+4. [Google Maps API](https://developers.google.com/maps/gmp-get-started)
+5. Convert UX design into code [(Youtube tutorial)](https://www.youtube.com/watch?v=tKzSnjWPtEw&t)
