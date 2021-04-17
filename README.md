@@ -16,4 +16,4 @@ You will also see any lint errors in the console.
 
 ## How to deploy to GitHub Pages
 
-### 'npm run deploy'
+### `npm run deploy`
