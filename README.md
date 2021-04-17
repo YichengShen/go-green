@@ -2,6 +2,10 @@
 
 Web final project
 
+## How to install dependencies
+
+### `npm i`
+
 ## How to run the development server
 
 In the project directory, you can run:
