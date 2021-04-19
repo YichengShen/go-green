@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
