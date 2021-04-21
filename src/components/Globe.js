@@ -33,7 +33,7 @@ const markerRenderer = (marker) => {
   const companions = [];
   for (let i = 0; i < 10; i++) {
     const companionGeometry = new THREE.SphereGeometry(
-      Math.min((size * Math.random()) / 2, 1),
+      Math.min(size * Math.random(), 3.5),
       10,
       10
     );
