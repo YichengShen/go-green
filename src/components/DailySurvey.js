@@ -10,6 +10,7 @@ import CityInputField from "./CityInputField";
 import Alert from "@material-ui/lab/Alert";
 import LocalGasStationRoundedIcon from "@material-ui/icons/LocalGasStationRounded";
 import EcoRoundedIcon from "@material-ui/icons/EcoRounded";
+import SurveyHelperDialog from "./SurveyHelperDialog";
 
 const surveyTheme = createMuiTheme({
   palette: {
@@ -32,7 +33,6 @@ const surveyTheme = createMuiTheme({
         backgroundColor: "rgba(0, 0, 0, .5)",
         fontWeight: "lighter",
         margin: "3px 0",
-        // padding: "10px 20px",
         borderRadius: 10,
         "&:hover": {
           color: "black",
@@ -106,19 +106,18 @@ const DailySurvey = (props, theme) => {
             >
               Today's Check-in
             </Typography>
-
             <CityInputField
               city={city}
               onSetCity={setCity}
               coordinates={coordinates}
               onSetCoordinates={setCoordinates}
             />
-
             <Box mt={2} />
             <Typography color="secondary">
               How did you commute today?
             </Typography>
             <Typography color="secondary">Select a level below.</Typography>
+
             <ToggleButtonGroup
               orientation="vertical"
               value={level}
@@ -143,7 +142,8 @@ const DailySurvey = (props, theme) => {
               </ToggleButton>
             </ToggleButtonGroup>
 
-            <Box mt={2} />
+            <SurveyHelperDialog />
+
             <Button color="secondary" onClick={onSubmit}>
               Submit
             </Button>
