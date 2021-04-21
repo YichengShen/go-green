@@ -8,6 +8,8 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import theme from "../theme";
 import CityInputField from "./CityInputField";
 import Alert from "@material-ui/lab/Alert";
+import LocalGasStationRoundedIcon from "@material-ui/icons/LocalGasStationRounded";
+import EcoRoundedIcon from "@material-ui/icons/EcoRounded";
 
 const surveyTheme = createMuiTheme({
   palette: {
@@ -22,11 +24,15 @@ const surveyTheme = createMuiTheme({
       },
     },
     MuiToggleButton: {
+      sizeLarge: {
+        padding: "15px 45px",
+      },
       root: {
         color: "white",
         backgroundColor: "rgba(0, 0, 0, .5)",
         fontWeight: "lighter",
         margin: "3px 0",
+        // padding: "10px 20px",
         borderRadius: 10,
         "&:hover": {
           color: "black",
@@ -121,19 +127,19 @@ const DailySurvey = (props, theme) => {
               onChange={handleChange}
             >
               <ToggleButton value="100" aria-label="All Green">
-                100% Green
+                <EcoRoundedIcon /> Green
               </ToggleButton>
               <ToggleButton value="75" aria-label="Mostly Green">
-                75% Green + 25% Gasoline
+                Mostly Green
               </ToggleButton>
               <ToggleButton value="50" aria-label="Half">
-                50% Green + 50% Gasoline
+                Half <EcoRoundedIcon /> Half <LocalGasStationRoundedIcon />
               </ToggleButton>
               <ToggleButton value="25" aria-label="Mostly Gasoline">
-                25% Green + 75% Gasoline
+                Mostly Gasoline
               </ToggleButton>
               <ToggleButton value="0" aria-label="All Gasoline">
-                100% Gasoline
+                <LocalGasStationRoundedIcon /> Gasoline
               </ToggleButton>
             </ToggleButtonGroup>
 
