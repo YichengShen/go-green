@@ -8,6 +8,7 @@ import BottomNav from "./BottomNav";
 import Header from "./Header";
 import Checkin from "../pages/Checkin";
 import Badges from "../pages/Badges";
+import Home from "../pages/Home"
 import Ranking from "../pages/Ranking";
 import { AuthProvider } from "../services/AuthContext";
 import PrivateRoute from "./PrivateRoute";
@@ -48,8 +49,7 @@ const App = () => {
 
                     <PrivateRoute path="/ranking" component={Ranking} />
 
-                    <Route exact path="/">
-                      home
+                    <Route exact path="/" component={Home}>
                     </Route>
                   </main>
                 </Grid>
