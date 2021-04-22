@@ -15,11 +15,9 @@ const theme = createMuiTheme({
 })
 
 const theme2 = createMuiTheme({
-  palette: {
-    primary: green,
-  },
+
   typography: {
-    fontFamily: "-apple-system",
+    fontFamily: '"Apple Color Emoji"',
   }
 })
 
