@@ -1,4 +1,4 @@
-import React from "react";
+import React,{ useState } from "react";
 import firebase from "../services/firebase"
 import { firestore as db } from "../services/firebase";
 import startOfToday from "../utils/startOfToday";
@@ -237,6 +237,7 @@ const Badges = () => {
     return badgesArray;
   }
 var statusArray;
+const [arr, setArr] = useState([]);
 
   React.useEffect(() => {
     async function check() {
@@ -247,19 +248,19 @@ var statusArray;
         let scores = Object.values(c);
         let UserId = Object.values(b);
         let AllData = Object.values(a);//return scores, userid, t(time)
-         statusArray = BadgeHandler();
-        console.log(statusArray);
+         setArr(BadgeHandler());
+        //console.log(statusArray);
       } catch (error) {
         console.log(error);
       }
     }
     check();
   }, []);
-  console.log(statusArray);
+  console.log(arr);
 
   return (
     <React.Fragment>
-      {statusArray.forEach(element => (
+      {arr.forEach(element => (
         <BadgesTest
           BadgeImageUrl={element[1]}
           BadgeExplanations={element[2]}
