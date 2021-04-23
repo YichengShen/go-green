@@ -271,3 +271,7 @@ var statusArray;
 };
 
 export default Badges;
+
+
+
+
