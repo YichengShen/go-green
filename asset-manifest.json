@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/go-green/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/go-green/static/js/main.e3cb28ea.chunk.js",
-    "main.js.map": "/go-green/static/js/main.e3cb28ea.chunk.js.map",
+    "main.js": "/go-green/static/js/main.65b997da.chunk.js",
+    "main.js.map": "/go-green/static/js/main.65b997da.chunk.js.map",
     "runtime-main.js": "/go-green/static/js/runtime-main.ae6358e9.js",
     "runtime-main.js.map": "/go-green/static/js/runtime-main.ae6358e9.js.map",
     "static/css/2.ec02d681.chunk.css": "/go-green/static/css/2.ec02d681.chunk.css",
-    "static/js/2.f2dd39df.chunk.js": "/go-green/static/js/2.f2dd39df.chunk.js",
-    "static/js/2.f2dd39df.chunk.js.map": "/go-green/static/js/2.f2dd39df.chunk.js.map",
+    "static/js/2.b8fdce28.chunk.js": "/go-green/static/js/2.b8fdce28.chunk.js",
+    "static/js/2.b8fdce28.chunk.js.map": "/go-green/static/js/2.b8fdce28.chunk.js.map",
     "index.html": "/go-green/index.html",
     "static/css/2.ec02d681.chunk.css.map": "/go-green/static/css/2.ec02d681.chunk.css.map",
     "static/css/main.6dea0f05.chunk.css.map": "/go-green/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.f2dd39df.chunk.js.LICENSE.txt": "/go-green/static/js/2.f2dd39df.chunk.js.LICENSE.txt"
+    "static/js/2.b8fdce28.chunk.js.LICENSE.txt": "/go-green/static/js/2.b8fdce28.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ae6358e9.js",
     "static/css/2.ec02d681.chunk.css",
-    "static/js/2.f2dd39df.chunk.js",
+    "static/js/2.b8fdce28.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.e3cb28ea.chunk.js"
+    "static/js/main.65b997da.chunk.js"
   ]
 }
