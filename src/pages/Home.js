@@ -6,6 +6,16 @@ import { makeStyles } from "@material-ui/core/styles";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import theme from "../theme";
 import { Link } from "react-router-dom";
+import {
+  GiPineTree,
+  GiFruitTree,
+  GiPalmTree,
+  GiTreeBranch,
+  GiPaperWindmill,
+  GiFairyWings,
+  GiFairyWand,
+} from "react-icons/gi";
+import { FiWind } from "react-icons/fi";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -114,7 +124,7 @@ const Home = () => {
             data-aos-easing="linear"
             style={{ color: "white" }}
           >
-            <Paper className={[classes.paper, classes.paperBlack]}>
+            <Paper className={`${classes.paper} ${classes.paperBlack}`}>
               <Typography
                 className={classes.greenBold}
                 variant="h3"
@@ -155,11 +165,43 @@ const Home = () => {
               <div data-aos="fade-right" data-aos-easing="linear">
                 <Paper className={classes.paperBlack}>
                   <Typography
-                    className={[classes.greenBold, classes.alignRight]}
+                    className={`${classes.greenBold} ${classes.alignRight}`}
                     variant="h3"
                     component="h1"
                   >
                     About Environmental Racism
+                    <br />
+                    <span
+                      data-aos="fade-right"
+                      data-aos-delay="2500"
+                      data-aos-easing="linear"
+                    >
+                      <GiPineTree />
+                    </span>
+                    &nbsp;
+                    <span
+                      data-aos="fade-right"
+                      data-aos-delay="2000"
+                      data-aos-easing="linear"
+                    >
+                      <GiFruitTree />
+                    </span>
+                    &nbsp;
+                    <span
+                      data-aos="fade-right"
+                      data-aos-delay="1500"
+                      data-aos-easing="linear"
+                    >
+                      <GiPalmTree />
+                    </span>
+                    &nbsp;
+                    <span
+                      data-aos="fade-right"
+                      data-aos-delay="1000"
+                      data-aos-easing="linear"
+                    >
+                      <GiTreeBranch />
+                    </span>
                   </Typography>
                 </Paper>
               </div>
@@ -222,11 +264,44 @@ const Home = () => {
               <div data-aos="fade-left" data-aos-easing="linear">
                 <Paper className={classes.paperBlack}>
                   <Typography
-                    className={[classes.greenBold, classes.alignLeft]}
+                    className={`${classes.greenBold} ${classes.alignLeft}`}
                     variant="h3"
                     component="h1"
                   >
                     About <br /> Air Quality
+                    <br />
+                    <span
+                      data-aos="fade-right"
+                      data-aos-delay="1000"
+                      data-aos-easing="linear"
+                    >
+                      <GiPaperWindmill />
+                    </span>
+                    &nbsp;
+                    <span
+                      data-aos="fade-right"
+                      data-aos-delay="1500"
+                      data-aos-easing="linear"
+                    >
+                      <GiFairyWings />
+                    </span>
+                    &nbsp;
+                    <span
+                      data-aos="fade-right"
+                      data-aos-delay="2000"
+                      data-aos-easing="linear"
+                    >
+                      <GiFairyWand />
+                    </span>
+                    &nbsp;
+                    <span
+                      data-aos="fade-right"
+                      data-aos-delay="2500"
+                      data-aos-easing="linear"
+                    >
+                      <FiWind />
+                    </span>
+                    &nbsp;
                   </Typography>
                 </Paper>
               </div>
