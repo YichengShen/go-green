@@ -132,24 +132,23 @@ const Home = () => {
               >
                 Our Mission
               </Typography>
-              <Typography className={classes.whiteText}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est
-                laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna
-                aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.Lorem ipsum dolor sit amet,
-                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+              <Typography
+                className={classes.whiteText}
+                variant="h6"
+                component="div"
+              >
+                Welcome to the GoGreen App! We are a group of students at Boston
+                College who are passionate about addressing environmental
+                issues. In this modern society, we, as human beings, consume the
+                environment continuously, but we often are not aware of how our
+                actions affect the global environment and influence others’
+                lives, which is a factor causing environmental racism. We create
+                the GoGreen App to promote people’s awareness of their daily
+                environmental footprints, visualize footprints of users from all
+                over the world, and encourage “green” actions through our reward
+                badges and ranking system. We believe that our app will make
+                people care more the environment from daily actions and spread a
+                positive vibe of protecting the environment. Come join us today!
               </Typography>
               <MuiThemeProvider theme={buttonTheme}>
                 <Link to="/signup" style={{ textDecoration: "none" }}>
@@ -208,25 +207,25 @@ const Home = () => {
             </Grid>
             <Grid item xs={12} md={6}>
               <div data-aos="fade-left" data-aos-easing="linear">
-                <Typography className={classes.whiteText}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum.Lorem
-                  ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                  enim ad minim veniam, quis
+                <Typography
+                  className={classes.whiteText}
+                  variant="h6"
+                  component="div"
+                >
+                  Environmental racism is a form of systematic racism where
+                  communities of color are disproportionately burdened with
+                  health hazards through other communities’ policies that force
+                  them to live in areas close to sources of toxic waste such as
+                  sewage works, mines, landfills, power stations, major roads,
+                  and emitters of airborne particulate. As a result, these minor
+                  communities suffer greater rates of health problems attendant
+                  on hazardous pollutants. Research results show that, African
+                  Americans were five times more likely to have lead poisoning
+                  from proximity to waste than caucasian children. Even African
+                  Americans who have higher salaries than White Americans are
+                  more likely to live in polluted areas. GoGreen aims to improve
+                  air quality as an aid to those who live in places with air
+                  pollution.
                 </Typography>
               </div>
             </Grid>
@@ -238,25 +237,21 @@ const Home = () => {
           <Grid container direction="row">
             <Grid item xs={6}>
               <div data-aos="fade-right" data-aos-easing="linear">
-                <Typography className={classes.whiteText}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in voluptate velit esse cillum
-                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt
-                  mollit anim id est laborum.Lorem ipsum dolor sit amet,
-                  consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                  ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-                  ea commodo consequat. Duis aute irure dolor in reprehenderit
-                  in voluptate velit esse cillum dolore eu fugiat nulla
-                  pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-                  in culpa qui officia deserunt mollit anim id est laborum.Lorem
-                  ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                  enim ad minim veniam, quis
+                <Typography
+                  className={classes.whiteText}
+                  variant="h6"
+                  component="div"
+                >
+                  Our app specifically targets air pollution caused by carbon
+                  emission. Currently, some communities are disproportionately
+                  impacted by air pollution. Low-income and color communities
+                  face the largest impact from air pollution. In the U.S.,
+                  people of color are 1.5 times more likely to live in an area
+                  with poor air quality than their white counterparts. People’s
+                  awareness of this issue is the key to reduce carbon emission
+                  so that the air quality in those impacted areas can be
+                  improved. Our app will promote green transportation methods to
+                  reduce carbon emission and protect the environment.
                 </Typography>
               </div>
             </Grid>
@@ -307,11 +302,16 @@ const Home = () => {
               </div>
             </Grid>
           </Grid>
+          <div
+            style={{ color: theme.palette.secondary.dark, textAlign: "right" }}
+          >
+            Copyright &copy; 2021 GoGreen.
+          </div>
         </Grid>
 
         <Grid item xs={1} sm={2} />
       </Grid>
-      <Box mb={10} />
+      <Box mb={12} />
     </>
   );
 };
