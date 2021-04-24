@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Box, Button, Grid, Paper, Typography } from "@material-ui/core";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { makeStyles } from "@material-ui/core/styles";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import theme from "../theme";
@@ -16,6 +15,7 @@ import {
   GiFairyWand,
 } from "react-icons/gi";
 import { FiWind } from "react-icons/fi";
+import { BsChevronDoubleDown } from "react-icons/bs";
 
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -94,7 +94,7 @@ const Home = () => {
           />
 
           <motion.div
-            animate={{ y: -10, opacity: 1 }}
+            animate={{ y: -20, opacity: 1 }}
             transition={{
               delay: 1,
               y: {
@@ -106,7 +106,9 @@ const Home = () => {
             }}
           >
             <div style={{ color: "white", textAlign: "center" }}>
-              <ExpandMoreIcon fontSize="large" />
+              <Typography variant="h3">
+                <BsChevronDoubleDown />
+              </Typography>
             </div>
           </motion.div>
         </Grid>
