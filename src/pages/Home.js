@@ -105,8 +105,9 @@ const Home = () => {
               },
             }}
           >
+            <Box mb={1} />
             <div style={{ color: "white", textAlign: "center" }}>
-              <Typography variant="h3">
+              <Typography variant="h4">
                 <BsChevronDoubleDown />
               </Typography>
             </div>
@@ -171,7 +172,7 @@ const Home = () => {
                 Our Goals
               </Typography>
               <Grid container direction="row">
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                   <span
                     data-aos="fade-right"
                     data-aos-delay="400"
@@ -184,7 +185,7 @@ const Home = () => {
                     />
                   </span>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                   <span
                     data-aos="fade"
                     data-aos-delay="800"
@@ -199,7 +200,7 @@ const Home = () => {
                     />
                   </span>
                 </Grid>
-                <Grid item xs={4}>
+                <Grid item xs={12} md={4}>
                   <span
                     data-aos="fade"
                     data-aos-delay="1200"
@@ -364,6 +365,9 @@ const Home = () => {
               </div>
             </Grid>
           </Grid>
+
+          <Box mb={5} />
+
           <div
             style={{ color: theme.palette.secondary.dark, textAlign: "right" }}
           >
