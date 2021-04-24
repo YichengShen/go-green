@@ -12,12 +12,12 @@ Web final project
 - [x] Firebase authentication
 - [x] Log in, sign up, & forget passward pages
 - [x] Firestore as database
-- [ ] Home page
+- [x] Home page
 - [x] Check-in page
   - [x] Check-in form
   - [x] Globe visualization
 - [ ] Badges page
-- [ ] Ranking page
+- [x] Ranking page
 
 ## How to install dependencies
 
