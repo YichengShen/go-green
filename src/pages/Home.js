@@ -160,6 +160,66 @@ const Home = () => {
             </Paper>
           </div>
 
+          {/* GOALS */}
+          <div data-aos="fade-up" data-aos-easing="linear">
+            <Paper className={`${classes.paper} ${classes.paperBlack}`}>
+              <Typography
+                className={classes.whiteBold}
+                variant="h3"
+                component="h1"
+              >
+                Our Goals
+              </Typography>
+              <Grid container direction="row">
+                <Grid item xs={4}>
+                  <span
+                    data-aos="fade-right"
+                    data-aos-delay="400"
+                    data-aos-easing="linear"
+                  >
+                    <img
+                      style={{ width: "100%" }}
+                      src={process.env.PUBLIC_URL + "/img/goal1.png"}
+                      alt="goal1"
+                    />
+                  </span>
+                </Grid>
+                <Grid item xs={4}>
+                  <span
+                    data-aos="fade"
+                    data-aos-delay="800"
+                    data-aos-easing="linear"
+                  >
+                    <img
+                      style={{
+                        width: "100%",
+                      }}
+                      src={process.env.PUBLIC_URL + "/img/goal2.png"}
+                      alt="goal2"
+                    />
+                  </span>
+                </Grid>
+                <Grid item xs={4}>
+                  <span
+                    data-aos="fade"
+                    data-aos-delay="1200"
+                    data-aos-easing="linear"
+                  >
+                    <img
+                      style={{
+                        width: "100%",
+                      }}
+                      src={process.env.PUBLIC_URL + "/img/goal3.png"}
+                      alt="goal3"
+                    />
+                  </span>
+                </Grid>
+              </Grid>
+            </Paper>
+          </div>
+
+          <Box mb={6} />
+
           {/* About Env Racism */}
           <Grid container direction="row">
             <Grid item xs={12} md={6}>
