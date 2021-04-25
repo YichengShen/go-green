@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import firebase from "../services/firebase";
 import { firestore as db } from "../services/firebase";
 import startOfToday from "../utils/startOfToday";
-import { Paper, Grid, Typography } from "@material-ui/core";
+import { Paper, Grid,Typography } from "@material-ui/core";
 import List from "@material-ui/core/List";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "30px 0px",
     display: "flex",
     flexDirection: "column",
+    color:"white",
   },
   greenBold: {
     color: theme.palette.secondary.light,
@@ -242,6 +243,22 @@ const Badges = () => {
     }
     return badgesArray;
   }
+  function sortArr(arr) {
+    //sort the status arr with awarded badges first.
+    var x;
+    var temp = [];
+    for (x = 0; x < arr.length; x++) {
+      if (arr[x][3] === 1) {
+        temp.push(arr[x]);
+      }
+    }
+    for (x = 0; x < arr.length; x++) {
+      if (arr[x][3] === 0) {
+        temp.push(arr[x]);
+      }
+    }
+    return temp;
+  }
   const [arr, setArr] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -258,7 +275,8 @@ const Badges = () => {
           setUserId(Object.values(b));
           //let AllData = Object.values(a); //return scores, userid, t(time
         }
-        setArr(BadgeHandler());
+
+        setArr(sortArr(BadgeHandler()));
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -277,6 +295,9 @@ const Badges = () => {
         <Grid item xs={1} sm={2} md={3} />
         <Grid item xs={10} sm={8} md={6}>
           <Paper className={classes.paper} elevation={10}>
+          <Typography className={classes.greenBold} align = "center" variant="h5" component="h1">
+            Badges
+          </Typography>
             <List>
               {arr.map((element, index) => {
                 return (
