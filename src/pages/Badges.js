@@ -4,9 +4,8 @@ import { firestore as db } from "../services/firebase";
 import startOfToday from "../utils/startOfToday";
 import { Paper, Grid, Typography } from "@material-ui/core";
 import List from "@material-ui/core/List";
-
 import { makeStyles } from "@material-ui/core/styles";
-import BadgesTest from "../components/AvatarBadges";
+import AvatarBadge from "../components/AvatarBadge";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -20,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   greenBold: {
     color: theme.palette.secondary.light,
+    fontSize: "36px",
     fontWeight: "bolder",
     marginBottom: "20px",
   },
@@ -307,7 +307,7 @@ const Badges = () => {
             <List>
               {arr.map((element, index) => {
                 return (
-                  <BadgesTest
+                  <AvatarBadge
                     key={index}
                     BadgeImageUrl={element[1]}
                     BadgeExplanations={element[2]}

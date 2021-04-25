@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const BadgesTest = (props) => {
+const AvatarBadge = (props) => {
   const { BadgeName, BadgeImageUrl, BadgeExplanations, BadgeStatus } = props;
   const classes = useStyles();
 
@@ -48,4 +48,4 @@ const BadgesTest = (props) => {
   );
 };
 
-export default BadgesTest;
+export default AvatarBadge;
