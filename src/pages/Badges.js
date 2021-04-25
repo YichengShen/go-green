@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bolder",
     marginBottom: "20px",
   },
+  greenText: {
+    color: theme.palette.secondary.light,
+  },
 }));
 
 function twoDimensionArray(a, b) {
@@ -61,7 +64,7 @@ let BadgeName = [
   "TodayTop",
   "TodayAboveAverage",
   "CityWideAboveAverageToday",
-  "CityWideTopToda"
+  "CityWideTopToda",
 ];
 let BadgeImages = [
   publicurl + "/assets/p4.png", //0
@@ -74,21 +77,19 @@ let BadgeImages = [
   publicurl + "/assets/p3_1.png",
   publicurl + "/assets/p7_1.png",
   publicurl + "/assets/p6_1.png",
-  publicurl + "/assets/p1.png",//10
+  publicurl + "/assets/p1.png", //10
   publicurl + "/assets/p1.png",
   publicurl + "/assets/p2.png",
   publicurl + "/assets/p2_1.png",
-
-
 ];
 let BadgeExplanations = [
-  "Checked in for 3 consecutive days!",//0
+  "Checked in for 3 consecutive days!", //0
   "Checked in for 7 consecutive days!",
   "Checked in for more than 5 days in total!",
   "Your transportation choice today got the top score amoung users from all over the world! Go Green!",
   "You performed above average worldwide! Thank you for your contribution to the environment!",
-  "You performed above average in your city today!",//5
-  "Your transportation choice today got the top score amoung users in your city!",//6
+  "You performed above average in your city today!", //5
+  "Your transportation choice today got the top score amoung users in your city!", //6
 ];
 var x;
 for (x = 0; x < BadgeName.length; x++) {
@@ -99,7 +100,6 @@ for (x = 0; x < BadgeName.length; x++) {
   temp.push(0);
   badgesArray.push(temp);
 } //initalize status
-
 
 const Badges = () => {
   const classes = useStyles();
@@ -121,7 +121,7 @@ const Badges = () => {
           a.push(parseInt(doc.data().score));
           a.push(String(doc.data().uid));
           a.push(doc.data().date);
-          a.push(String(doc.data().city))
+          a.push(String(doc.data().city));
           AllData.push(a);
         });
         return AllData;
@@ -183,7 +183,7 @@ const Badges = () => {
     // second is totol check in days.
     return result;
   }
-  function cityWideEvaluation(arr,CurrentUserScore) {
+  function cityWideEvaluation(arr, CurrentUserScore) {
     let cityList = parse2DArray(arr, 3);
     let index = UserId.indexOf(CurrentUserID);
     let userCity = cityList[index];
@@ -194,8 +194,8 @@ const Badges = () => {
         TempScoresArray.push(arr[i][0]);
       }
     }
-    return AboveAvg(TempScoresArray,CurrentUserScore);
-  }//return an Int;
+    return AboveAvg(TempScoresArray, CurrentUserScore);
+  } //return an Int;
 
   function currentUserScore(scores) {
     let index = UserId.indexOf(CurrentUserID);
@@ -238,7 +238,7 @@ const Badges = () => {
   function BadgeHandler() {
     CurrentUserScore = currentUserScore(scores);
     //console.log(cityWideEvaluation(scores,CurrentUserScore));
-    switch(cityWideEvaluation(scores,CurrentUserScore)){
+    switch (cityWideEvaluation(scores, CurrentUserScore)) {
       case 1:
         badgesArray[5][3] = 1;
         badgesArray[5][1] = BadgeImages[10];
@@ -258,7 +258,7 @@ const Badges = () => {
         break;
     }
 
-    switch (AboveAvg(scores,CurrentUserScore)) {
+    switch (AboveAvg(scores, CurrentUserScore)) {
       case 1:
         badgesArray[4][3] = 1;
         badgesArray[4][1] = BadgeImages[4];
@@ -279,7 +279,7 @@ const Badges = () => {
     }
     let temp = checkin(AllData);
     let consecutive = temp[0];
-    var total1 =temp[1];
+    var total1 = temp[1];
     setTotal(total1);
     checkconsecutive(consecutive, badgesArray);
     if (total1 >= 5) {
@@ -293,7 +293,6 @@ const Badges = () => {
     // a.push(total);
     return badgesArray;
   }
-
 
   function sortArr(arr) {
     //sort the status arr with awarded badges first.
@@ -314,7 +313,7 @@ const Badges = () => {
   const [arr, setArr] = useState([]);
   const [loading, setLoading] = useState(true);
   var [CurrentUserScore, setCurrentUserScore] = useState(0);
-  var [total,setTotal] = useState(0);
+  var [total, setTotal] = useState(0);
 
   React.useEffect(() => {
     async function check() {
@@ -331,7 +330,7 @@ const Badges = () => {
         }
         setCurrentUserScore(currentUserScore(scores));
         setArr(sortArr(BadgeHandler()));
-        // let temp = checkin(AllData); 
+        // let temp = checkin(AllData);
         // setTotal (temp[1]);
         setLoading(false);
       } catch (error) {
@@ -351,7 +350,6 @@ const Badges = () => {
         <Grid item xs={1} sm={2} md={3} />
         <Grid item xs={10} sm={8} md={6}>
           <Paper className={classes.paper} elevation={10}>
-
             <Typography
               className={classes.greenBold}
               align="center"
@@ -359,12 +357,6 @@ const Badges = () => {
               component="h1"
             >
               Badges
-            </Typography>
-            <Typography className={classes.greenBold} align="center" variant="h6" component="h2">
-              Your score for today is  {CurrentUserScore}
-            </Typography>
-            <Typography className={classes.greenBold} align="center" variant="h6" component="h2">
-              You have GO GREEN along with worldwide users for {total} days!
             </Typography>
 
             <List>
@@ -379,6 +371,26 @@ const Badges = () => {
                 );
               })}
             </List>
+
+            <Typography
+              className={classes.greenText}
+              align="center"
+              variant="h6"
+              component="h2"
+            >
+              {total > 1
+                ? `You have checked in at GoGreen with worldwide users for ${total} days.`
+                : "Today is the first day you check in at GoGreen. Keep it up!"}
+            </Typography>
+
+            <Typography
+              className={classes.greenText}
+              align="center"
+              variant="h6"
+              component="h2"
+            >
+              Your score today is {CurrentUserScore}.
+            </Typography>
           </Paper>
         </Grid>
         <Grid item xs={1} sm={2} md={3} />
