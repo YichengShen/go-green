@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import firebase from "../services/firebase";
 import { firestore as db } from "../services/firebase";
 import startOfToday from "../utils/startOfToday";
-import { Paper, Grid,Typography } from "@material-ui/core";
+import { Paper, Grid, Typography } from "@material-ui/core";
 import List from "@material-ui/core/List";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "30px 0px",
     display: "flex",
     flexDirection: "column",
-    color:"white",
+    color: "white",
   },
   greenBold: {
     color: theme.palette.secondary.light,
@@ -74,10 +74,10 @@ let BadgeImages = [
   publicurl + "/assets/p6_1.png",
 ];
 let BadgeExplanations = [
-  "You have checked in for 3 consecutive days! ",
-  "You have checked in for 7 consecutive days! ",
-  "You have checked in for More than 5 days in total! ",
-  "You got the top score for you today's transportation choice! Go Green!",
+  "Checked in for 3 consecutive days! ",
+  "Checked in for 7 consecutive days! ",
+  "Checked in for more than 5 days in total! ",
+  "You got the top score for your transportation choice today! Go Green!",
   "You performed above average! Thank you for your contribution to the environment!",
 ];
 var x;
@@ -96,7 +96,7 @@ const Badges = () => {
   var i;
   var UserId = [];
   const [scores, setScores] = useState([]);
-  const [userId, setUserId] = useState([]);
+  // const [userId, setUserId] = useState([]);
   const CurrentUserID = firebase.auth().currentUser.uid;
   var AllData = twoDimensionArray(3, 0);
   //getting data
@@ -266,13 +266,13 @@ const Badges = () => {
     async function check() {
       try {
         setLoading(true);
-        let c = await getTodayScore();
-        let a = await getAllScore();
-        let b = await getTodayId();
+        let todayScore = await getTodayScore();
+        await getAllScore();
+        await getTodayId();
 
         if (loading) {
-          setScores(Object.values(c));
-          setUserId(Object.values(b));
+          setScores(Object.values(todayScore));
+          // setUserId(Object.values(b));
           //let AllData = Object.values(a); //return scores, userid, t(time
         }
 
@@ -295,19 +295,23 @@ const Badges = () => {
         <Grid item xs={1} sm={2} md={3} />
         <Grid item xs={10} sm={8} md={6}>
           <Paper className={classes.paper} elevation={10}>
-          <Typography className={classes.greenBold} align = "center" variant="h5" component="h1">
-            Badges
-          </Typography>
+            <Typography
+              className={classes.greenBold}
+              align="center"
+              variant="h5"
+              component="h1"
+            >
+              Badges
+            </Typography>
+
             <List>
               {arr.map((element, index) => {
                 return (
-                  <>
-                    <BadgesTest
-                      key={index}
-                      BadgeImageUrl={element[1]}
-                      BadgeExplanations={element[2]}
-                    />
-                  </>
+                  <BadgesTest
+                    key={index}
+                    BadgeImageUrl={element[1]}
+                    BadgeExplanations={element[2]}
+                  />
                 );
               })}
             </List>
