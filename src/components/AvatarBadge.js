@@ -3,41 +3,52 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
-
 import Divider from "@material-ui/core/Divider";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
+import theme from "../theme";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    maxWidth: "36ch",
-    backgroundColor: theme.palette.background.paper,
   },
-  inline: {
-    display: "inline",
+  avatarLarge: {
+    width: theme.spacing(8),
+    height: theme.spacing(8),
+    marginRight: theme.spacing(3),
   },
 }));
 
 const AvatarBadge = (props) => {
-  const { BadgeName, BadgeImageUrl, BadgeExplanations, BadgeStatus } = props;
+  const { badgeImageUrl, badgeExplanations, badgeActivated } = props;
   const classes = useStyles();
 
   return (
     <>
-      <ListItem key={BadgeExplanations} alignItems="flex-start">
+      <ListItem alignItems="flex-start">
         <ListItemAvatar>
-          <Avatar alt="BadgeImage" src={BadgeImageUrl} />
+          <Avatar
+            className={classes.avatarLarge}
+            alt="BadgeImage"
+            src={badgeImageUrl}
+          />
         </ListItemAvatar>
         <ListItemText
           primary={
             <React.Fragment>
-              <Typography
-                component="span"
-                variant="h6"
-                className={classes.inline}
-              >
-                {BadgeExplanations}
+              <Typography component="span" variant="h6">
+                <span
+                  style={
+                    badgeActivated
+                      ? {
+                          fontWeight: "bold",
+                          color: theme.palette.secondary.light,
+                        }
+                      : { fontWeight: "normal" }
+                  }
+                >
+                  {badgeExplanations}
+                </span>
               </Typography>
             </React.Fragment>
           }

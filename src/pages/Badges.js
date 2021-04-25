@@ -9,10 +9,10 @@ import AvatarBadge from "../components/AvatarBadge";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.primary.main,
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(10),
-    padding: "30px 0px",
+    padding: "40px 15px",
     display: "flex",
     flexDirection: "column",
     color: "white",
@@ -309,8 +309,9 @@ const Badges = () => {
                 return (
                   <AvatarBadge
                     key={index}
-                    BadgeImageUrl={element[1]}
-                    BadgeExplanations={element[2]}
+                    badgeImageUrl={element[1]}
+                    badgeExplanations={element[2]}
+                    badgeActivated={element[3]}
                   />
                 );
               })}
