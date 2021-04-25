@@ -331,8 +331,6 @@ const Badges = () => {
         }
         setCurrentUserScore(currentUserScore(scores));
         setArr(sortArr(BadgeHandler()));
-        // let temp = checkin(AllData); 
-        // setTotal (temp[1]);
         setLoading(false);
       } catch (error) {
         console.log(error);
