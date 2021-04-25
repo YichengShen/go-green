@@ -6,6 +6,7 @@ import Login from "../pages/Login";
 import ForgotPassword from "../pages/ForgotPassword";
 import BottomNav from "./BottomNav";
 import Header from "./Header";
+import Home from "../pages/Home";
 import Checkin from "../pages/Checkin";
 import Badges from "../pages/Badges";
 import Ranking from "../pages/Ranking";
@@ -49,7 +50,7 @@ const App = () => {
                     <PrivateRoute path="/ranking" component={Ranking} />
 
                     <Route exact path="/">
-                      home
+                      <Home />
                     </Route>
                   </main>
                 </Grid>
