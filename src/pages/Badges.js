@@ -60,6 +60,8 @@ let BadgeName = [
   "TotalMoreThan5days",
   "TodayTop",
   "TodayAboveAverage",
+  "CityWideAboveAverageToday",
+  "CityWideTopToda"
 ];
 let BadgeImages = [
   publicurl + "/assets/p4.png", //0
@@ -72,13 +74,21 @@ let BadgeImages = [
   publicurl + "/assets/p3_1.png",
   publicurl + "/assets/p7_1.png",
   publicurl + "/assets/p6_1.png",
+  publicurl + "/assets/p1.png",//10
+  publicurl + "/assets/p1.png",
+  publicurl + "/assets/p2.png",
+  publicurl + "/assets/p2_1.png",
+
+
 ];
 let BadgeExplanations = [
-  "Checked in for 3 consecutive days! ",
-  "Checked in for 7 consecutive days! ",
-  "Checked in for more than 5 days in total! ",
-  "You got the top score for your transportation choice today! Go Green!",
-  "You performed above average! Thank you for your contribution to the environment!",
+  "Checked in for 3 consecutive days!",//0
+  "Checked in for 7 consecutive days!",
+  "Checked in for more than 5 days in total!",
+  "Your transportation choice today got the top score amoung users from all over the world! Go Green!",
+  "You performed above average worldwide! Thank you for your contribution to the environment!",
+  "You performed above average in your city today!",//5
+  "Your transportation choice today got the top score amoung users in your city!",//6
 ];
 var x;
 for (x = 0; x < BadgeName.length; x++) {
@@ -90,6 +100,7 @@ for (x = 0; x < BadgeName.length; x++) {
   badgesArray.push(temp);
 } //initalize status
 
+
 const Badges = () => {
   const classes = useStyles();
 
@@ -98,7 +109,7 @@ const Badges = () => {
   const [scores, setScores] = useState([]);
   // const [userId, setUserId] = useState([]);
   const CurrentUserID = firebase.auth().currentUser.uid;
-  var AllData = twoDimensionArray(3, 0);
+  var AllData = twoDimensionArray(4, 0);
   //getting data
   const getAllScore = async () => {
     return db
@@ -110,6 +121,7 @@ const Badges = () => {
           a.push(parseInt(doc.data().score));
           a.push(String(doc.data().uid));
           a.push(doc.data().date);
+          a.push(String(doc.data().city))
           AllData.push(a);
         });
         return AllData;
@@ -171,27 +183,39 @@ const Badges = () => {
     // second is totol check in days.
     return result;
   }
+  function cityWideEvaluation(arr,CurrentUserScore) {
+    let cityList = parse2DArray(arr, 3);
+    let index = UserId.indexOf(CurrentUserID);
+    let userCity = cityList[index];
+    var TempScoresArray = [];
+    var i;
+    for (i = 0; i < arr.length; i++) {
+      if (arr[i][3] === userCity) {
+        TempScoresArray.push(arr[i][0]);
+      }
+    }
+    return AboveAvg(TempScoresArray,CurrentUserScore);
+  }//return an Int;
 
-  function AboveAvg(scores) {
+  function currentUserScore(scores) {
+    let index = UserId.indexOf(CurrentUserID);
+    return scores[index];
+  }
+
+  function AboveAvg(scores, CurrentUserScore) {
     var arrSum = 0;
     var temp = 0;
     for (i = 0; i < scores.length; i++) {
       arrSum = temp + scores[i];
     }
     var avg = arrSum / scores.length;
-    let index = UserId.indexOf(CurrentUserID);
-    if (index == null) {
-      return 0;
+    let topScore = Math.max(...scores);
+    if (CurrentUserScore === topScore) {
+      return 2; //top Score
+    } else if (CurrentUserScore >= avg && CurrentUserScore !== topScore) {
+      return 1; //above average
     } else {
-      let topScore = Math.max(...scores);
-
-      if (scores[index] === topScore) {
-        return 2; //top Score
-      } else if (scores[index] >= avg && scores[index] !== topScore) {
-        return 1; //above average
-      } else {
-        return -1; //below average
-      }
+      return -1; //below average
     }
   }
   function checkconsecutive(consecutive, array1) {
@@ -212,7 +236,29 @@ const Badges = () => {
   }
 
   function BadgeHandler() {
-    switch (AboveAvg(scores)) {
+    CurrentUserScore = currentUserScore(scores);
+    //console.log(cityWideEvaluation(scores,CurrentUserScore));
+    switch(cityWideEvaluation(scores,CurrentUserScore)){
+      case 1:
+        badgesArray[5][3] = 1;
+        badgesArray[5][1] = BadgeImages[10];
+        badgesArray[6][1] = BadgeImages[13];
+        break;
+      case -1:
+        badgesArray[5][3] = 0;
+        badgesArray[6][3] = 0;
+        badgesArray[5][1] = BadgeImages[11];
+        badgesArray[6][1] = BadgeImages[13];
+        break;
+      case 2:
+        badgesArray[5][3] = 1;
+        badgesArray[6][3] = 1;
+        badgesArray[5][1] = BadgeImages[10];
+        badgesArray[6][1] = BadgeImages[12];
+        break;
+    }
+
+    switch (AboveAvg(scores,CurrentUserScore)) {
       case 1:
         badgesArray[4][3] = 1;
         badgesArray[4][1] = BadgeImages[4];
@@ -233,16 +279,22 @@ const Badges = () => {
     }
     let temp = checkin(AllData);
     let consecutive = temp[0];
-    let total = temp[1];
+    var total1 =temp[1];
+    setTotal(total1);
     checkconsecutive(consecutive, badgesArray);
-    if (total >= 5) {
+    if (total1 >= 5) {
       badgesArray[2][3] = 1;
       badgesArray[2][1] = BadgeImages[2];
     } else {
       badgesArray[2][1] = BadgeImages[7];
     }
+    // var a = [];
+    // a.push(badgesArray);
+    // a.push(total);
     return badgesArray;
   }
+
+
   function sortArr(arr) {
     //sort the status arr with awarded badges first.
     var x;
@@ -261,6 +313,8 @@ const Badges = () => {
   }
   const [arr, setArr] = useState([]);
   const [loading, setLoading] = useState(true);
+  var [CurrentUserScore, setCurrentUserScore] = useState(0);
+  var [total,setTotal] = useState(0);
 
   React.useEffect(() => {
     async function check() {
@@ -275,8 +329,10 @@ const Badges = () => {
           // setUserId(Object.values(b));
           //let AllData = Object.values(a); //return scores, userid, t(time
         }
-
+        setCurrentUserScore(currentUserScore(scores));
         setArr(sortArr(BadgeHandler()));
+        // let temp = checkin(AllData); 
+        // setTotal (temp[1]);
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -295,6 +351,7 @@ const Badges = () => {
         <Grid item xs={1} sm={2} md={3} />
         <Grid item xs={10} sm={8} md={6}>
           <Paper className={classes.paper} elevation={10}>
+
             <Typography
               className={classes.greenBold}
               align="center"
@@ -302,6 +359,12 @@ const Badges = () => {
               component="h1"
             >
               Badges
+            </Typography>
+            <Typography className={classes.greenBold} align="center" variant="h6" component="h2">
+              Your score for today is  {CurrentUserScore}
+            </Typography>
+            <Typography className={classes.greenBold} align="center" variant="h6" component="h2">
+              You have GO GREEN along with worldwide users for {total} days!
             </Typography>
 
             <List>
