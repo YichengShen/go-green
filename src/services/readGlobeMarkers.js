@@ -1,12 +1,16 @@
 import { firestore as db } from "./firebase";
-import startOfToday from "../utils/startOfToday";
+import startOfToday, { aMonthAgo } from "../utils/startOfToday";
 import uniqueId from "../utils/uniqueId";
 import scoreToColor from "../utils/scoreToColor";
 
 const readGlobeMarkers = async () => {
+  // Toggle this to read data of today or this month
+  const daily = false;
+  const dateRange = daily ? startOfToday() : aMonthAgo();
+
   return db
     .collection("surveys")
-    .where("date", ">", startOfToday())
+    .where("date", ">", dateRange)
     .get()
     .then((querySnapshot) => {
       var markers = {};
