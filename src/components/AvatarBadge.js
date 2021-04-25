@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
     height: theme.spacing(8),
     marginRight: theme.spacing(3),
   },
+  greySmallText: {
+    color: "grey",
+    fontSize: "14px",
+  },
 }));
 
 const AvatarBadge = (props) => {
@@ -50,6 +54,11 @@ const AvatarBadge = (props) => {
                   {badgeExplanations}
                 </span>
               </Typography>
+              {!badgeActivated && (
+                <Typography className={classes.greySmallText} varient="body2">
+                  not yet owned
+                </Typography>
+              )}
             </React.Fragment>
           }
         />
