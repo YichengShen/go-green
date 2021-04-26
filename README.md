@@ -16,18 +16,25 @@ Web final project
 - [x] Check-in page
   - [x] Check-in form
   - [x] Globe visualization
-- [ ] Badges page
+- [x] Badges page
 - [x] Ranking page
 
-## How to install dependencies
+## Minor Things to Improve (if enough time)
+- [ ] Change font style
+- [ ] Improve styling for log in/sign up
+- [ ] Fix visualization when markers on globe are too crowded
 
-### `npm i`
+## To Run
 
-## How to run the development server
+### How to install dependencies
+
+`npm i`
+
+### How to run the development server
 
 In the project directory, you can run:
 
-### `npm start`
+`npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -35,9 +42,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-## How to deploy to GitHub Pages
+### How to deploy to GitHub Pages
 
-### `npm run deploy`
+`npm run deploy`
 
 ## Resources
 1. [Material-UI](https://material-ui.com)
