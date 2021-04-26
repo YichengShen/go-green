@@ -4,22 +4,22 @@ import { firestore as db } from "../services/firebase";
 import startOfToday from "../utils/startOfToday";
 import { Paper, Grid, Typography } from "@material-ui/core";
 import List from "@material-ui/core/List";
-
 import { makeStyles } from "@material-ui/core/styles";
-import BadgesTest from "../components/AvatarBadges";
+import AvatarBadge from "../components/AvatarBadge";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.primary.main,
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(10),
-    padding: "30px 0px",
+    padding: "40px 15px",
     display: "flex",
     flexDirection: "column",
     color: "white",
   },
   greenBold: {
     color: theme.palette.secondary.light,
+    fontSize: "36px",
     fontWeight: "bolder",
     marginBottom: "20px",
   },
@@ -82,13 +82,13 @@ let BadgeImages = [
 
 ];
 let BadgeExplanations = [
-  "You have checked in for 3 consecutive days! ",//0
-  "You have checked in for 7 consecutive days! ",
-  "You have checked in for More than 5 days in total! ",
-  "You got the top score for you today's transportation choice among users across the world! Go Green!",
+  "Checked in for 3 consecutive days!",//0
+  "Checked in for 7 consecutive days!",
+  "Checked in for more than 5 days in total!",
+  "Your transportation choice today got the top score amoung users from all over the world! Go Green!",
   "You performed above average worldwide! Thank you for your contribution to the environment!",
   "You performed above average in your city today!",//5
-  "You got the top score for your today's transportation choice in your city!",//6
+  "Your transportation choice today got the top score amoung users in your city!",//6
 ];
 var x;
 for (x = 0; x < BadgeName.length; x++) {
@@ -107,7 +107,7 @@ const Badges = () => {
   var i;
   var UserId = [];
   const [scores, setScores] = useState([]);
-  const [userId, setUserId] = useState([]);
+  // const [userId, setUserId] = useState([]);
   const CurrentUserID = firebase.auth().currentUser.uid;
   var AllData = twoDimensionArray(4, 0);
   //getting data
@@ -320,14 +320,14 @@ const Badges = () => {
     async function check() {
       try {
         setLoading(true);
-        let c = await getTodayScore();
-        let a = await getAllScore();
-        let b = await getTodayId();
+        let todayScore = await getTodayScore();
+        await getAllScore();
+        await getTodayId();
 
         if (loading) {
-          setScores(Object.values(c));
-          setUserId(Object.values(b));
-          let AllData = Object.values(a); //return scores, userid, t(time)
+          setScores(Object.values(todayScore));
+          // setUserId(Object.values(b));
+          //let AllData = Object.values(a); //return scores, userid, t(time
         }
         setCurrentUserScore(currentUserScore(scores));
         setArr(sortArr(BadgeHandler()));
@@ -349,25 +349,31 @@ const Badges = () => {
         <Grid item xs={1} sm={2} md={3} />
         <Grid item xs={10} sm={8} md={6}>
           <Paper className={classes.paper} elevation={10}>
-            <Typography className={classes.greenBold} align="center" variant="h5" component="h1">
+
+            <Typography
+              className={classes.greenBold}
+              align="center"
+              variant="h5"
+              component="h1"
+            >
               Badges
-          </Typography>
+            </Typography>
             <Typography className={classes.greenBold} align="center" variant="h6" component="h2">
               Your score for today is  {CurrentUserScore}
             </Typography>
             <Typography className={classes.greenBold} align="center" variant="h6" component="h2">
               You have GO GREEN along with worldwide users for {total} days!
             </Typography>
+
             <List>
               {arr.map((element, index) => {
                 return (
-                  <>
-                    <BadgesTest
-                      key={index}
-                      BadgeImageUrl={element[1]}
-                      BadgeExplanations={element[2]}
-                    />
-                  </>
+                  <AvatarBadge
+                    key={index}
+                    badgeImageUrl={element[1]}
+                    badgeExplanations={element[2]}
+                    badgeActivated={element[3]}
+                  />
                 );
               })}
             </List>

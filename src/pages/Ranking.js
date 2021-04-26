@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   greenBold: {
     color: theme.palette.secondary.light,
+    fontSize: "36px",
     fontWeight: "bolder",
     marginBottom: "20px",
   },
