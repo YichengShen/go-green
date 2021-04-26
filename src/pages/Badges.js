@@ -77,8 +77,8 @@ let BadgeImages = [
   publicurl + "/assets/p3_1.png",
   publicurl + "/assets/p7_1.png",
   publicurl + "/assets/p6_1.png",
-  publicurl + "/assets/p1.png", //10
-  publicurl + "/assets/p1.png",
+  publicurl + "/assets/p1.png",//10
+  publicurl + "/assets/p1_1.png",
   publicurl + "/assets/p2.png",
   publicurl + "/assets/p2_1.png",
 ];
@@ -330,8 +330,7 @@ const Badges = () => {
         }
         setCurrentUserScore(currentUserScore(scores));
         setArr(sortArr(BadgeHandler()));
-        // let temp = checkin(AllData);
-        // setTotal (temp[1]);
+
         setLoading(false);
       } catch (error) {
         console.log(error);
