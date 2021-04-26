@@ -77,7 +77,7 @@ let BadgeImages = [
   publicurl + "/assets/p3_1.png",
   publicurl + "/assets/p7_1.png",
   publicurl + "/assets/p6_1.png",
-  publicurl + "/assets/p1.png",//10
+  publicurl + "/assets/p1.png", //10
   publicurl + "/assets/p1_1.png",
   publicurl + "/assets/p2.png",
   publicurl + "/assets/p2_1.png",
@@ -382,14 +382,16 @@ const Badges = () => {
                 : "Today is the first day you check in at GoGreen. Keep it up!"}
             </Typography>
 
-            <Typography
-              className={classes.greenText}
-              align="center"
-              variant="h6"
-              component="h2"
-            >
-              Your score today is {CurrentUserScore}.
-            </Typography>
+            {CurrentUserScore && (
+              <Typography
+                className={classes.greenText}
+                align="center"
+                variant="h6"
+                component="h2"
+              >
+                Your score today is {CurrentUserScore}.
+              </Typography>
+            )}
           </Paper>
         </Grid>
         <Grid item xs={1} sm={2} md={3} />
