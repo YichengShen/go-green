@@ -75,7 +75,7 @@ let BadgeImages = [
   publicurl + "/assets/p7_1.png",
   publicurl + "/assets/p6_1.png",
   publicurl + "/assets/p1.png",//10
-  publicurl + "/assets/p1.png",
+  publicurl + "/assets/p1-1.png",
   publicurl + "/assets/p2.png",
   publicurl + "/assets/p2_1.png",
 
