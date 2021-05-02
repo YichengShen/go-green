@@ -11,7 +11,7 @@ const random = (scaleFactor) => {
 };
 
 const markerRenderer = (marker) => {
-  const size = Math.max(marker.value / 12, 1);
+  const size = Math.max(marker.value / 14, 1);
   const geometry = new THREE.SphereGeometry(size, 10, 10);
   const material = new THREE.MeshBasicMaterial({
     color: new THREE.Color(marker.color),
@@ -33,7 +33,7 @@ const markerRenderer = (marker) => {
   const companions = [];
   for (let i = 0; i < 10; i++) {
     const companionGeometry = new THREE.SphereGeometry(
-      Math.min(size * Math.random(), 3.5),
+      Math.min(size * Math.random(), 3),
       10,
       10
     );
