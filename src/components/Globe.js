@@ -134,7 +134,7 @@ const Globe = () => {
         width="auto"
         markers={markers}
         options={options}
-        initialCoordinates={[42.3355, 71.1685]}
+        initialCoordinates={[25.0, -70.0]}
         initialCameraDistanceRadiusScale={5}
       />
     </div>
