@@ -22,7 +22,7 @@ Web final project
 ## Minor Things to Improve (if enough time)
 - [ ] Change font style
 - [ ] Improve styling for log in/sign up
-- [ ] Fix visualization when markers on globe are too crowded
+- [x] Fix visualization when markers on globe are too crowded
 - [x] Change JOIN US redirect on Home page
 
 ## To Run
