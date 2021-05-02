@@ -1,4 +1,5 @@
 import React from "react";
+import { useAuth } from "../services/AuthContext";
 import { motion } from "framer-motion";
 import { Box, Button, Grid, Paper, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
@@ -78,6 +79,8 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles();
 
+  const { currentUser } = useAuth();
+
   React.useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
@@ -154,9 +157,11 @@ const Home = () => {
                 positive vibe of protecting the environment. Come join us today!
               </Typography>
               <MuiThemeProvider theme={buttonTheme}>
-                <Link to="/signup" style={{ textDecoration: "none" }}>
-                  <Button size="large">Join Us</Button>
-                </Link>
+                {!currentUser && (
+                  <Link to="/signup" style={{ textDecoration: "none" }}>
+                    <Button size="large">Join Us</Button>
+                  </Link>
+                )}
               </MuiThemeProvider>
             </Paper>
           </div>
